@@ -27,7 +27,7 @@
 class Wheel {
  private:
   std::vector<int> pins;  ///< The pin setting values (either 0s or 1s).
-  size_t pinSetting;      ///< The current pin index.
+  size_t pinSetting = 0;  ///< The current pin index.
 
  public:
   /**

@@ -25,7 +25,7 @@
  *
  * @param pins The wheel's pin configuration (either 1s or 0s).
  */
-Wheel::Wheel(std::vector<int> pins) : pins(std::move(pins)), pinSetting(0) {}
+Wheel::Wheel(std::vector<int> pins) : pins(std::move(pins)) {}
 
 /**
  * @brief Get the Current Pin object.
