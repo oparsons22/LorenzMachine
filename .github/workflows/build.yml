@@ -36,7 +36,7 @@ jobs:
         run: cmake --build build
 
       - name: Check build succeeded
-        run: test -f build/bin/CppTemplate
+        run: test -f build/bin/LorenzMachine
 
       - name: Run clang-tidy
         run: |
