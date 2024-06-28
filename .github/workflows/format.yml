@@ -23,4 +23,4 @@ jobs:
           brew install clang-format
 
       - name: Check code formatting with clang-format
-        run: clang-format --dry-run --verbose src/*.cpp include/*.hpp
+        run: clang-format --dry-run --verbose src/*.cpp include/*.hpp test/*.cpp
