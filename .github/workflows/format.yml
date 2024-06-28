@@ -1,0 +1,26 @@
+name: Format
+
+on:
+  push:
+    branches: ["main"]
+
+  pull_request:
+    branches: ["*"]
+
+  workflow_dispatch:
+
+jobs:
+  format:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install clang-format
+        run: |
+          brew update
+          brew install clang-format
+
+      - name: Check code formatting with clang-format
+        run: clang-format --dry-run --verbose src/*.cpp include/*.hpp

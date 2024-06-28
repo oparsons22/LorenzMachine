@@ -1,0 +1,41 @@
+# This workflow will run unit tests
+
+name: Test
+
+on:
+  push:
+    branches: ["main"]
+
+  pull_request:
+    branches: ["*"]
+
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Install CMake and scan-build
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake clang-tools
+
+      - name: Create build directory
+        run: mkdir -p build
+
+      - name: Compile with CMake
+        run: cmake -B build -S . -DCMAKE_CXX_COMPILER_LAUNCHER=scan-build
+
+      - name: Build with CMake
+        run: cmake --build build
+
+      - name: Run unit tests
+        run: |
+          cd build/test
+          ctest --output-on-failure
+

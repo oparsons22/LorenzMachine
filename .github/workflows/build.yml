@@ -1,0 +1,45 @@
+# This workflow will check for build errors with CMake and scan-build
+
+name: Build
+
+on:
+  push:
+    branches: ["main"]
+
+  pull_request:
+    branches: ["*"]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          token: ${{ secrets.PAT_TOKEN }}
+
+      - name: Install CMake and scan-build
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake clang-tools
+
+      - name: Create build directory
+        run: mkdir -p build
+
+      - name: Compile with CMake
+        run: cmake -B build -S . -DCMAKE_CXX_COMPILER_LAUNCHER=scan-build
+
+      - name: Build with CMake
+        run: cmake --build build
+
+      - name: Check build succeeded
+        run: test -f build/bin/CppTemplate
+
+      - name: Run clang-tidy
+        run: |
+          cd build
+          clang-tidy -p . $(find ../src -name '*.cpp') $(find ../include -name '*.hpp')
+

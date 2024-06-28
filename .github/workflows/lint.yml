@@ -1,0 +1,33 @@
+# This workflow lints with cppcheck and cpplint
+
+name: Lint
+
+on:
+  push:
+    branches: ["main"]
+
+  pull_request:
+    branches: ["*"]
+
+  workflow_dispatch:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install tools
+        run: | 
+          sudo apt-get update
+          sudo apt-get install -y clang-tools cppcheck python3-pip
+
+      - name: Install cpplint
+        run: pip3 install cpplint
+
+      - name: Run cppcheck
+        run: cppcheck --enable=all --inconclusive --std=c++17 --platform=unix64 src include -I include
+
+      - name: Run cpplint
+        run: cpplint $(find src include -name '*.hpp' -o -name '*.cpp')
