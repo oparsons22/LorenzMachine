@@ -41,5 +41,5 @@ jobs:
       - name: Run clang-tidy
         run: |
           cd build
-          clang-tidy -p . $(find ../src -name '*.cpp') $(find ../include -name '*.hpp')
+          clang-tidy -p . $(find ../src -name '*.cpp') $(find ../include -name '*.hpp') $(find ../test -name '*.cpp')
 

@@ -11,7 +11,3 @@ WarningsAsErrors: '*'
 HeaderFilterRegex: '.*'
 AnalyzeTemporaryDtors: true
 FormatStyle: google
-ExtraArgs: [
-  "-I${CMAKE_SOURCE_DIR}/extern/googletest/googletest/include",
-  "-I${CMAKE_SOURCE_DIR}/extern/googletest/googlemock/include"
-]
