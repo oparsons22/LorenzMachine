@@ -27,7 +27,7 @@ jobs:
         run: pip3 install cpplint
 
       - name: Run cppcheck
-        run: cppcheck --enable=all --inconclusive --std=c++17 --platform=unix64 src include test -I include
+        run: cppcheck --enable=all --suppress=missingIncludeSystem --inconclusive --std=c++17 --platform=unix64 src include test -I include
 
       - name: Run cpplint
         run: cpplint $(find src include test -name '*.hpp' -o -name '*.cpp')

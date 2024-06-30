@@ -22,7 +22,7 @@
 /******************************* Test Fixtures ********************************/
 
 /**
- * @brief Testy fixture for a Wheel object.
+ * @brief Test fixture for a Wheel object.
  *
  */
 class WheelTest : public ::testing::Test {
@@ -34,7 +34,7 @@ class WheelTest : public ::testing::Test {
    * @brief Setup the Wheel fixture.
    *
    * This function is called before each test to create a new Wheel object with
-   * four pins [1, 0, 1, 0].
+   * two pins [0, 1].
    *
    */
   void SetUp() override {
@@ -50,20 +50,23 @@ class WheelTest : public ::testing::Test {
    */
   void TearDown() override {}
 
+  /**
+   * @brief Get the Wheel object.
+   *
+   * @return std::unique_ptr<Wheel>& the Wheel object.
+   */
   auto getWheel() -> std::unique_ptr<Wheel>& { return wheel; }
 };
 
 /******************************** Unit Tests **********************************/
 
 /**
- * @brief Test the wheel's constructor.
+ * @brief Test the getting the wheel's current pin value.
  *
- * This function tests the wheel's constructor by asserting the current pin
- * value is 0. This indicates the object stores the provided pins and sets the
- * pinSetting to 0.
+ * This function tests getting the value of the current pin.
  *
  */
-TEST_F(WheelTest, TestConstructor) {
+TEST_F(WheelTest, TestGetCurrentPin) {
   ASSERT_EQ(getWheel()->getCurrentPin(), 0);
 }
 
