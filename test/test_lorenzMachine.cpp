@@ -39,7 +39,7 @@ class LorenzMachineTest : public ::testing::Test {
     const Wheel m37({1, 1});
     const Wheel m61({1, 1});
     const WheelGroup chi({Wheel({1, 1}), Wheel({1, 1})});
-    const WheelGroup psi({Wheel({1, 1}), Wheel({1, 1})});
+    const WheelGroup psi({Wheel({1, 1}), Wheel({0, 1})});
 
     lorenzMachine = std::make_unique<LorenzMachine>(m61, m37, psi, chi);
   }
@@ -73,5 +73,5 @@ class LorenzMachineTest : public ::testing::Test {
  *
  */
 TEST_F(LorenzMachineTest, TestEncryptChar) {
-  ASSERT_EQ(getLorenzMachine()->encryptChar(0b11), 0b01);
+  ASSERT_EQ(getLorenzMachine()->encryptChar(0b11), 0b10);
 }
