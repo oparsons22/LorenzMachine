@@ -54,7 +54,7 @@ class WheelGroupTest : public ::testing::Test {
    *
    * @return std::unique_ptr<WheelGroup>& The WheelGroup object.
    */
-  auto getWheelGroup() -> std::unique_ptr<WheelGroup>& { return wheelGroup; }
+  std::unique_ptr<WheelGroup>& getWheelGroup() { return wheelGroup; }
 };
 
 /******************************** Unit Tests **********************************/

@@ -7,6 +7,7 @@ Checks: >
   bugprone-*,
   cppcoreguidelines-*,
   misc-*,
+  -modernize-use-trailing-return-type
 WarningsAsErrors: '*'
 HeaderFilterRegex: '.*'
 AnalyzeTemporaryDtors: true

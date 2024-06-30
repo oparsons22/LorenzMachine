@@ -50,9 +50,12 @@ void WheelGroup::rotate() {
  *
  * @return int The combined pin values of the group's wheels.
  */
-[[nodiscard]] auto WheelGroup::getCurrentPins() const -> int {
-  return std::accumulate(wheels.begin(), wheels.end(), 0,
-                         [](int acc, const Wheel& wheel) {
-                           return (acc << 1) | wheel.getCurrentPin();
-                         });
+int WheelGroup::getCurrentPins() {
+  int pins = 0;
+
+  for (auto& wheel : wheels) {
+    pins = (pins << 1) | wheel.getCurrentPin();
+  }
+
+  return pins;
 }

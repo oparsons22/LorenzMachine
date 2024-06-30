@@ -59,7 +59,7 @@ class WheelGroup {
    *
    * @return int The combined pin values of the group's wheels.
    */
-  [[nodiscard]] auto getCurrentPins() const -> int;
+  int getCurrentPins();
 };
 
 #endif  // INCLUDE_WHEELGROUP_HPP_

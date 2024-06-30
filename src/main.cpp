@@ -20,7 +20,7 @@
  *
  * @return EXIT_SUCCESS upon successful termination.
  */
-auto main() -> int {
+int main() {
   std::cout << "Hello, World!" << '\n';
   return EXIT_SUCCESS;
 }
