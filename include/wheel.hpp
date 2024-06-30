@@ -48,7 +48,7 @@ class Wheel {
    *
    * @return int The current pin setting value (either 1 or 0).
    */
-  int getCurrentPin();
+  [[nodiscard]] int getCurrentPin() const;
 
   /**
    * @brief Rotates the wheel.

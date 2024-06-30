@@ -35,7 +35,7 @@ Wheel::Wheel(std::vector<int> pins) : pins(std::move(pins)) {}
  *
  * @return int The current pin setting value (either 1 or 0).
  */
-int Wheel::getCurrentPin() { return pins[pinSetting]; }
+int Wheel::getCurrentPin() const { return pins[pinSetting]; }
 
 /**
  * @brief Rotates the wheel.

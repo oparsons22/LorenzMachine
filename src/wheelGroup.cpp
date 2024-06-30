@@ -8,7 +8,6 @@
 
 /************************* Standard Library Includes **************************/
 
-#include <numeric>
 #include <utility>
 #include <vector>
 
@@ -50,10 +49,10 @@ void WheelGroup::rotate() {
  *
  * @return int The combined pin values of the group's wheels.
  */
-int WheelGroup::getCurrentPins() {
+int WheelGroup::getCurrentPins() const {
   int pins = 0;
 
-  for (auto& wheel : wheels) {
+  for (const auto& wheel : wheels) {
     pins = (pins << 1) | wheel.getCurrentPin();
   }
 
